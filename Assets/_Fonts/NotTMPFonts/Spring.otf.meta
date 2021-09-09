@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 59893f0b52676154b9ffdd35aad7d5c8
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Spring
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 44fbc8025ffe8c746bb40cbf01d3a1c9, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
