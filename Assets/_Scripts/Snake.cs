@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(TailGenerator))]
+[RequireComponent(typeof(SnakeInput))]
+
 public class Snake : MonoBehaviour
 {
     [SerializeField] private SnakeHead _snakeHead;
@@ -11,6 +13,7 @@ public class Snake : MonoBehaviour
     [Tooltip("For example: great case is when snake`s speed equals 3 then attraction will be 15.")]
     [SerializeField] private float _tailSegmentsAttraction;
 
+    private SnakeInput _snakeInput;
     private List<Segment> _tail;
     private TailGenerator _tailGenerator;
 
@@ -18,6 +21,7 @@ public class Snake : MonoBehaviour
     private void Awake()
     {
         _tailGenerator = GetComponent<TailGenerator>();
+        _snakeInput = GetComponent<SnakeInput>();
 
         _tail = _tailGenerator.Generate();
     }
@@ -29,6 +33,8 @@ public class Snake : MonoBehaviour
     private void FixedUpdate()   
     {
         Move(_snakeHead.transform.position + _snakeHead.transform.up * _speed * Time.fixedDeltaTime);
+
+        _snakeHead.transform.up = _snakeInput.GetDirectionToClick(_snakeHead.transform.position);
     }
 
     private void Move(Vector3 nextPosition)
