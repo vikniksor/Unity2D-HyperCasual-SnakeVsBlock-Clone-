@@ -24,7 +24,7 @@ public class Snake : MonoBehaviour
 
     /// <summary>
     /// better when need to continiously movement
-    /// always has same speed so the object moves without shakes but really smooth
+    /// always has same speed(same frames per second) so the object moves without shakes but really smooth
     /// </summary>
     private void FixedUpdate()   
     {
