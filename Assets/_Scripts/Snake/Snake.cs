@@ -30,6 +30,16 @@ public class Snake : MonoBehaviour
         SizeUpdated?.Invoke(_tail.Count);
     }
 
+    private void OnEnable()
+    {
+        _snakeHead.BlockCollided += OnBlockCollided;
+    }
+
+    private void OnDisable()
+    {
+        _snakeHead.BlockCollided -= OnBlockCollided;
+    }
+
     /// <summary>
     /// better when need to continiously movement
     /// always has same speed(same frames per second) so the object moves without shakes but really smooth
@@ -56,5 +66,12 @@ public class Snake : MonoBehaviour
         _snakeHead.Move(previousPosition);
     }
 
+    private void OnBlockCollided()
+    {
+        Segment deletedSegment = _tail[_tail.Count - 1];
+        _tail.Remove(deletedSegment);
+        DEstroy(deletedSegment.gameObject);
 
+        SizeUpdated?.Invoke(_tail.Count);
+    }
 }
