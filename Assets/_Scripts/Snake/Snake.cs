@@ -62,8 +62,7 @@ public class Snake : MonoBehaviour
         foreach (var segment in _tail)
         {
             Vector3 tempPosition = segment.transform.position;
-            segment.transform.position = Vector2.Lerp(segment.transform.position, previousPosition,
-                                                      _tailSegmentsAttraction * Time.deltaTime);
+            segment.transform.position = Vector2.Lerp(segment.transform.position, previousPosition, _tailSegmentsAttraction * Time.deltaTime);
             previousPosition = tempPosition;
         }
 
