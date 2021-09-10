@@ -465,9 +465,9 @@ MonoBehaviour:
   _distanceBetweenFullLine: 3
   _distanceBetweenRandomLine: 0
   _blockTemplate: {fileID: 1691154139958063006, guid: 651b14f390390af48a952daea41bc77f, type: 3}
-  _blockSpawnChance: 0
-  _wallTemplate: {fileID: 0}
-  _wallSpawnChance: 0
+  _blockSpawnChance: 50
+  _wallTemplate: {fileID: 4565876111003071072, guid: 5f72c06226a49ae4e80d131c926614b0, type: 3}
+  _wallSpawnChance: 35
 --- !u!4 &1836218293
 Transform:
   m_ObjectHideFlags: 0
