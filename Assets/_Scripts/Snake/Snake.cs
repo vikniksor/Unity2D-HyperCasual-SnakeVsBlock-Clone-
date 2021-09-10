@@ -13,6 +13,7 @@ public class Snake : MonoBehaviour
     [SerializeField] private float _speed;
     [Tooltip("For example: great case is when snake`s speed equals 3 then attraction will be 15.")]
     [SerializeField] private float _tailSegmentsAttraction;
+    [SerializeField] private int _tailSize;
 
     private SnakeInput _snakeInput;
     private List<Segment> _tail;
@@ -26,18 +27,21 @@ public class Snake : MonoBehaviour
         _tailGenerator = GetComponent<TailGenerator>();
         _snakeInput = GetComponent<SnakeInput>();
 
-        _tail = _tailGenerator.Generate();
+        _tail = _tailGenerator.Generate(_tailSize);
         SizeUpdated?.Invoke(_tail.Count);
     }
 
     private void OnEnable()
     {
         _snakeHead.BlockCollided += OnBlockCollided;
+        _snakeHead.BonusCollected += OnBonusCollected;
+
     }
 
     private void OnDisable()
     {
         _snakeHead.BlockCollided -= OnBlockCollided;
+        _snakeHead.BonusCollected -= OnBonusCollected;
     }
 
     /// <summary>
@@ -72,6 +76,12 @@ public class Snake : MonoBehaviour
         _tail.Remove(deletedSegment);
         Destroy(deletedSegment.gameObject);
 
+        SizeUpdated?.Invoke(_tail.Count);
+    }
+
+    private void OnBonusCollected(int bonusSize)
+    {
+        _tail.AddRange(_tailGenerator.Generate(bonusSize));
         SizeUpdated?.Invoke(_tail.Count);
     }
 }
