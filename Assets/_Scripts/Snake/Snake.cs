@@ -70,7 +70,7 @@ public class Snake : MonoBehaviour
     {
         Segment deletedSegment = _tail[_tail.Count - 1];
         _tail.Remove(deletedSegment);
-        DEstroy(deletedSegment.gameObject);
+        Destroy(deletedSegment.gameObject);
 
         SizeUpdated?.Invoke(_tail.Count);
     }
